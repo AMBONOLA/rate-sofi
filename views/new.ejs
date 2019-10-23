@@ -1,0 +1,12 @@
+<% include partials/header %>
+
+<h1>Post a Sofi Pic!</h1>
+<form action="/sofipics" method="POST">
+  <input type="text" name="name" placeholder="name">
+  <input type="text" name="image" placeholder="image url">
+  <button>Submit!</button>
+</form>
+
+<a href="/sofipics">Go back!</a>
+
+<% include partials/footer %>

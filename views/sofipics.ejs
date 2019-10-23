@@ -1,10 +1,31 @@
-<h1>Check out these sweet Sofi pics!</h1>
+<% include partials/header %>
 
-<% sofipics.forEach(function(sofipic){ %>
-  <div>
-    <h4>
-      <%= sofipic.name %>
-    </h4>
-    <img src="<%= sofipic.image %>">
+<div class="container">
+  <header class="jumbotron">
+    <div>
+      <h1>Check out these sweet Sofi pics!</h1>
+      <p>Enjoy the wonderful world of Sofi!</p>
+      <p>
+        <a class="btn btn-primary btn-lg" 
+        href="/sofipics/new">
+        Add a new pic of Sofi!</a>
+      </p>
+    </div>
+  </header>
+
+  <div class="row">
+    <% sofipics.forEach(function(sofipic){ %>
+    <div class="col-md-3 col-sm-6">
+      <div class="d-flex align-content-between flex-wrap">
+        <figure class="figure">
+          <img src="<%= sofipic.image %>" class="figure-img img-fluid rounded" alt="Sofi the Shih Tzu.">
+          <figcaption class="figure-caption"><%= sofipic.name %></figcaption>
+        </figure>
+      </div>
+    </div>
+   <% }); %>
   </div>
-<% }); %>
+</div>
+
+
+<% include partials/footer %>
