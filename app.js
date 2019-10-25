@@ -45,7 +45,7 @@ app.get("/sofipics/new", function(req, res){
 var url = process.env.DATABASEURL || "mongodb+srv://andrea:andrea123@cluster0-kkwas.mongodb.net/ratesofi?retryWrites=true&w=majority";
 //have production db set to DATABASEURL on heroku 
 mongoose
-.connect(url, { useNewUrlParser: true, useCreateIndex: true })
+.connect(url, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
 .then(() => console.log('MongoDB Connected...'))
 .catch(err => console.log(err));
 
