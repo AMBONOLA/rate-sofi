@@ -1,6 +1,7 @@
 var express = require("express"),
     app = express(),
-    bodyParser = require("body-parser")
+    bodyParser = require("body-parser"),
+    mongoose = require("mongoose")
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -40,7 +41,15 @@ app.get("/sofipics/new", function(req, res){
   res.render("new")
 });
 
+//Connect to Mongo
+var url = process.env.DATABASEURL || "mongodb+srv://andrea:andrea123@cluster0-kkwas.mongodb.net/ratesofi?retryWrites=true&w=majority";
+//have production db set to DATABASEURL on heroku 
+mongoose
+.connect(url, { useNewUrlParser: true, useCreateIndex: true })
+.then(() => console.log('MongoDB Connected...'))
+.catch(err => console.log(err));
 
+mongoose.set('useFindAndModify', false);
 app.listen(process.env.PORT || 3000, function(req, res){
 console.log("Enjoy Sofi!");
 });
